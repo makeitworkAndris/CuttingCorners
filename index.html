@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = [];
+var yValues = [0,1];
+
+var a = 1 *100;
+var b = 1 *100;
+var ab;
+var c;
+var percent = []
+
+
+
+for (let i = 0; i <= 2000; i++) {
+    b+=1
+    ab= a+b
+    c = Math.sqrt((a*a)+(b*b))
+    if(i % 12.5 == 0){
+        percent.push(1-(c/ab))
+        xValues.push(i/100)
+    }
+    
+    
+    
+    // console.log(c)
+}
+console.log(percent)
+yValues = percent
+
+
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+        fill: true,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,0)",
+        borderColor: "rgba(0,0,255,1)",
+        data: yValues,
+    }]
+  },
+  options: {
+    legend: {display: false},
+  }
+});
+</script>
+
+</body>
+</html>
+
+
